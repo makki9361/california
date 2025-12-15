@@ -1,3 +1,4 @@
+https://california.kpk45.ru/admin - логин для админа
 Админ: admin admin123
 
 Yii Version	2.0.53
