@@ -42,8 +42,8 @@ $config = [
                 'host' => 'smtp.yandex.ru',
                 'port' => 465,
                 'encryption' => 'ssl',
-                'username' => 'kirillmaksimencko@yandex.ru',
-                'password' => 'ujbwontaswgoygfv',
+                'username' => '<Почта>',
+                'password' => '<Пароль приложения>',
             ],
         ],
         'log' => [
