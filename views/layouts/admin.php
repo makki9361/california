@@ -39,7 +39,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     </style>
     <?php $this->head() ?>
 </head>
-<body>
+<body class="admin-body">
 <?php $this->beginBody() ?>
 
 <header id="header">
@@ -47,7 +47,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     NavBar::begin([
             'brandLabel' => Html::img(Yii::getAlias('@web') . '/media/logo.svg', ['alt' => Yii::$app->name, 'class' => 'logo']),
             'brandUrl' => Url::to(['/admin']),
-            'options' => ['class' => 'navbar-expand-md my-bar fixed-top']
+            'options' => ['class' => 'navbar-expand-md my-bar fixed-top admin-bar']
     ]);
 
     $menuItems = [];
@@ -55,6 +55,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         $menuItems = [
                 ['label' => 'ГЛАВНАЯ', 'url' => ['/admin/index']],
                 ['label' => 'ЗАКАЗЫ', 'url' => ['/admin/orders']],
+                ['label' => 'ПРОДУКТЫ', 'url' => ['/admin/products']],
                 ['label' => 'ВЫЙТИ',
                         'url' => ['/admin/logout'],
                         'linkOptions' => ['data-method' => 'post'],
@@ -77,9 +78,6 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <main>
     <div class="overlay" id="overlay"></div>
     <div class="container">
-        <?php if (!empty($this->params['breadcrumbs'])): ?>
-            <?= Breadcrumbs::widget(['links' => $this->params['breadcrumbs']]) ?>
-        <?php endif ?>
         <?= Alert::widget() ?>
         <?= $content ?>
     </div>
@@ -97,8 +95,12 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     element.style.border = 'none';
+                    element.style.background = 'none';
+                    element.style.backdropFilter = 'none';
                 } else {
                     element.style.borderBottom = '2px solid transparent';
+                    element.style.background = 'linear-gradient(rgb(255 255 255 / 96%), rgb(255 255 255 / 87%)) padding-box, radial-gradient(rgb(0 0 0 / 20%), rgb(237 237 237 / 0%)) border-box';
+                    element.style.backdropFilter = 'blur(2px)';
                 }
             });
         }, {

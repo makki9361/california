@@ -76,7 +76,7 @@ $this->title = 'Редактировать заказ #' . $model->id;
                             <?= Html::a('Отмена', ['view-order', 'id' => $model->id], [
                                     'class' => 'btn btn-primary'
                             ]) ?>
-                            <?= Html::a('Удалить', ['delete-order', 'id' => $model->id], [
+                            <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
                                     'class' => 'btn btn-primary',
                                     'data' => [
                                             'confirm' => 'Вы уверены, что хотите удалить этот заказ?',

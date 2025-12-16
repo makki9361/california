@@ -35,32 +35,41 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <?php $this->beginBody() ?>
 <header id="header">
     <?php
-    NavBar::begin([
-        'brandLabel' => Html::img(Yii::getAlias('@web') . '/media/logo.svg', ['alt' => Yii::$app->name, 'class' => 'logo']),
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => ['class' => 'navbar-expand-md my-bar fixed-top']
-    ]);
+    $session = 'site/about';
+    if ($session == Yii::$app->controller->route) {
+        NavBar::begin([
+                'brandLabel' => Html::img(Yii::getAlias('@web') . '/media/logo-w.png', ['alt' => Yii::$app->name, 'class' => 'logo']),
+                'brandUrl' => Yii::$app->homeUrl,
+                'options' => ['class' => 'navbar-expand-md my-bar fixed-top']
+        ]);
+    } else {
+        NavBar::begin([
+                'brandLabel' => Html::img(Yii::getAlias('@web') . '/media/logo.svg', ['alt' => Yii::$app->name, 'class' => 'logo']),
+                'brandUrl' => Yii::$app->homeUrl,
+                'options' => ['class' => 'navbar-expand-md my-bar fixed-top']
+        ]);
+    };
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => [
             ['label' => 'ВСЕ ПРОДУКТЫ', 'url' => ['/product/index']],
             ['label' => 'О НАС', 'url' => ['/site/about']],
-            ['label' => 'ПОДДЕРЖКА', 'url' => ['/site/support']],
+            ['label' => 'ПОДДЕРЖКА', 'url' => ['/site/supp']],
         ]
     ]);
     echo '<div class="icons-section">
             <button class="icon-btn" id="searchBtn">
             </button>
-            
-            <button class="icon-btn" id="cartBtn">
-            </button>
         </div>
         
         <div class="dropdown-menu search-dropdown border-0" id="searchMenu">
-            <input type="text" class="search-input border-0" placeholder="Введите запрос...">
+            <form action="/localhost/California/web/products" method="get">
+                <input type="text" name="ProductSearch[name]">
+                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </form>
         </div>
 
-        <div class="dropdown-menu cart-dropdown" id="cartMenu">
+        <div class="dropdown-menu cart-dropdown invisible d-none" id="cartMenu">
             <div class="sort-section">
                 <div class="sort-options">
                     <button class="sort-btn active" style="border-radius: 15px 0 0 0">По дате</button>
@@ -90,7 +99,6 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const searchBtn = document.getElementById('searchBtn');
-            const cartBtn = document.getElementById('cartBtn');
             const searchMenu = document.getElementById('searchMenu');
             const cartMenu = document.getElementById('cartMenu');
             const overlay = document.getElementById('overlay');
@@ -111,18 +119,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                 } else {
                     hideAllMenus();
                     searchMenu.style.display = 'flex';
-                    overlay.style.display = 'flex';
-                }
-            });
-
-            cartBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                if (cartMenu.style.display === 'flex') {
-                    hideAllMenus();
-                } else {
-                    hideAllMenus();
-                    cartMenu.style.display = 'flex';
-                    overlay.style.display = 'flex';
+                    overlay.style.display = 'block';
                 }
             });
 
@@ -180,8 +177,10 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     element.style.border = 'none';
+
                 } else {
                     element.style.borderBottom = '2px solid transparent';
+                    element.style.background = 'linear-gradient(rgb(255 255 255 / 96%), rgb(255 255 255 / 87%)) padding-box, radial-gradient(rgb(0 0 0 / 20%), rgb(237 237 237 / 0%)) border-box !important';
                 }
             });
         }, {
@@ -189,7 +188,6 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         });
 
         observer.observe(topMarker);
-
     </script>
 </main>
 
@@ -197,7 +195,11 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     <div class="footer-columns">
 
         <div class="footer-column f-c-spec">
-            <?= Html::img(Yii::getAlias('@web') . '/media/logo.svg', ['alt' => Yii::$app->name, 'class' => 'logo']) ?>
+            <?php if ($session == Yii::$app->controller->route) {?>
+                <?= Html::img(Yii::getAlias('@web') . '/media/logo-w.png', ['alt' => Yii::$app->name, 'class' => 'logo']) ?>
+            <?php } else { ?>
+                <?= Html::img(Yii::getAlias('@web') . '/media/logo.svg', ['alt' => Yii::$app->name, 'class' => 'logo']) ?>
+            <?php } ?>
             <p class="footer-subtitle">
                 Подпишитесь на SMS-уведомления, чтобы получать информацию о наших лучших предложениях.
             </p>
@@ -216,15 +218,15 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         <div class="footer-column">
             <h3>Компания</h3>
             <ul class="footer-links">
-                <li><a href="#">О нас</a></li>
-                <li><a href="#">Поддержка</a></li>
+                <li><a href="<?= Url::to('@web/site/about')?>">О нас</a></li>
+                <li><a href="<?= Url::to('@web/site/supp')?>">Поддержка</a></li>
             </ul>
         </div>
 
         <div class="footer-column">
             <h3>Поддержка</h3>
             <ul class="footer-links">
-                <li><a href="#">Style Guide</a></li>
+                <li><a href="<?= Url::to('@web/site/supp#faq-general')?>">Style Guide</a></li>
                 <li><a href="#">Licensing</a></li>
                 <li><a href="#">Change Log</a></li>
                 <li><a href="#">Contact</a></li>

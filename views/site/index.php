@@ -67,7 +67,7 @@ $this->title = 'Главная';
 
     <div class="categories-grid gap-3">
         <div class="bl_1 d-flex flex-column justify-content-between">
-            <div class="category-card"  id="categ-card-one">
+            <a href="<?= Yii::getAlias('@web') . '/products?ProductSearch%5Bcategory_id%5D=1&ProductSearch%5Bsort%5D=&ProductSearch%5Bname%5D='?>" style="color: black" class="category-card text-decoration-none"  id="categ-card-one">
                 <div class="category-image">
                     <?= Html::img(Yii::getAlias('@web') . '/media/609cd33610f5bce3a3242d7165d4c622572a7f34.png', ['alt' => 'arrow'])?>
                 </div>
@@ -75,9 +75,9 @@ $this->title = 'Главная';
                     <span class="category-label">Ноутбуки</span>
                     <h3 class="category-title">Настоящее решение <br> для ноутбука</h3>
                 </div>
-            </div>
+            </a>
 
-            <div class="category-card"  id="categ-card-two">
+            <a href="<?= Yii::getAlias('@web') . '/products?ProductSearch%5Bcategory_id%5D=4&ProductSearch%5Bsort%5D=&ProductSearch%5Bname%5D='?>" style="color: black" class="category-card text-decoration-none"  id="categ-card-two">
                 <div class="category-image">
                     <?= Html::img(Yii::getAlias('@web') . '/media/382a966d9393f6cbe099e93a46809a2330d2eebf.png', ['alt' => 'arrow'])?>
                 </div>
@@ -85,10 +85,10 @@ $this->title = 'Главная';
                     <span class="category-label">Часы</span>
                     <h3 class="category-title">Не просто <br> стильно</h3>
                 </div>
-            </div>
+            </a>
         </div>
         <div class="d-flex gap-3">
-            <div class="category-card"  id="categ-card-three">
+            <a href="<?= Yii::getAlias('@web') . '/products?ProductSearch%5Bcategory_id%5D=2&ProductSearch%5Bsort%5D=&ProductSearch%5Bname%5D='?>" class="category-card text-decoration-none"  id="categ-card-three" style="color: black">
                 <div class="category-image">
                     <?= Html::img(Yii::getAlias('@web') . '/media/40fa449bd25d54bfdac12913f24fb4638ff57107.png', ['alt' => 'arrow'])?>
                 </div>
@@ -96,9 +96,9 @@ $this->title = 'Главная';
                     <span class="category-label">Телефоны</span>
                     <h3 class="category-title">Ваша повседневная <br> жизнь</h3>
                 </div>
-            </div>
+            </a>
 
-            <div class="category-card"  id="categ-card-four">
+            <a href="<?= Yii::getAlias('@web') . '/products?ProductSearch%5Bcategory_id%5D=3&ProductSearch%5Bsort%5D=&ProductSearch%5Bname%5D='?>" class="category-card text-decoration-none"  id="categ-card-four" style="color: black">
                 <div class="category-content">
                     <span class="category-label">Планшеты</span>
                     <h3 class="category-title">Расширьте возможности <br> работы</h3>
@@ -106,7 +106,7 @@ $this->title = 'Главная';
                 <div class="category-image">
                     <?= Html::img(Yii::getAlias('@web') . '/media/d179b03d8d6f6accf6ec8a5bbc7487f406513dea.png', ['alt' => 'arrow'])?>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 </section>

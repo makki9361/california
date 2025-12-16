@@ -11,11 +11,16 @@ use Yii;
  * @property string $name
  * @property int $category_id
  * @property string $image
+ * @property string $price
+ * @property string $description
  *
  * @property Category $category
  */
 class Product extends \yii\db\ActiveRecord
 {
+
+    public $imageFile;
+
     /**
      * {@inheritdoc}
      */
@@ -27,13 +32,19 @@ class Product extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+
     public function rules()
     {
         return [
-            [['name', 'category_id'], 'required'],
+            [['name', 'category_id', 'price'], 'required'],
             [['category_id'], 'integer'],
+            [['description'], 'string'],
             [['name', 'image'], 'string', 'max' => 255],
+            [['price'], 'string', 'max' => 255],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['category_id' => 'id']],
+
+            // Исправленная валидация для файла
+            [['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg, jpeg, gif', 'checkExtensionByMimeType' => false],
         ];
     }
 
@@ -47,6 +58,9 @@ class Product extends \yii\db\ActiveRecord
             'name' => 'Название',
             'category_id' => 'Категория',
             'image' => 'Изображение',
+            'price' => 'Цена',
+            'description' => 'Описание',
+            'imageFile' => 'Изображение',
         ];
     }
 

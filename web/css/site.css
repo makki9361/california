@@ -1,3 +1,7 @@
+html{
+    scroll-padding-top: 120px;
+}
+
 main > .container {
     padding: 100px 15px 20px;
     width: 91vw !important;
@@ -122,8 +126,9 @@ main > .container {
 
 .search-dropdown {
     width: 350px;
-    min-height: auto;
+    min-height: 60px;
     transition: display .6s ease-out !important;
+    overflow: hidden;
 }
 
 .cart-dropdown {
@@ -1863,6 +1868,8 @@ footer > .footer-bottom{
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 30px;
+    background: rgba(255,255,255, 0.4);
+    backdrop-filter: blur(3px);
 }
 .login-form form{
     display: flex;
@@ -1896,6 +1903,11 @@ tr td{
     max-width: 600px;
     width: 95vw;
 }
+
+.orders-view .card{
+    background: rgb(255 255 255 / 40%) !important;
+    backdrop-filter: blur(3px);
+}
 .card-header h4{
     font-family: 'Jost', sans-serif;
 }
@@ -1914,6 +1926,10 @@ tr td{
     max-width: 600px;
     width: 95vw;
 }
+.orders-create .card{
+    background: rgb(255 255 255 / 40%) !important;
+    backdrop-filter: blur(3px);
+}
 .form-group{
     margin-bottom: 10px;
 }
@@ -1927,7 +1943,10 @@ tr td{
 .card-body{
     padding: 15px !important;
 }
-
+.orders-update{
+    width: 600px;
+    max-width: 100%;
+}
 #ordersform-product_id{
     border-radius: 50px !important;
     min-width: 100% !important;
@@ -1975,4 +1994,144 @@ textarea:hover{
 textarea:focus{
     border-color: black !important;
     box-shadow: none !important;
+}
+
+select{
+    border-radius: 50px !important;
+}
+/* продукты  */
+
+.card-header div h4{
+    font-family: 'Jost', sans-serif;
+}
+.card-header div span{
+    font-family: 'Manrope', sans-serif;
+    display: flex;
+    align-items: center;
+}
+
+.admin-product-image{
+    border: 1px solid #d3d3d3;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    background: rgba(255,255,255,0.4) !important;
+    backdrop-filter: blur(3px);
+}
+
+.product-info-content{
+    font-family: 'Jost', sans-serif;
+    border-top: 1px solid #c5c5c5;
+    background: none;
+}
+
+.products-view .card{
+    width: 700px;
+    background: rgba(255,255,255,0.4) !important;
+    backdrop-filter: blur(3px);
+    border-radius: 20px 20px 30px 30px   !important;
+}
+
+.modal-image-body{
+    padding: 15px;
+}
+.products-update{
+    width: 610px;
+}
+.products-update .card{
+    background: rgb(255 255 255 / 40%) !important;
+    backdrop-filter: blur(3px);
+}
+
+.product-create{
+    width: 600px;
+}
+.product-create .card{
+    background: rgb(255 255 255 / 40%) !important;
+    backdrop-filter: blur(3px);
+}
+
+.admin-body{
+    background: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.8)), url("../../web/media/bg.png");
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 100vh;
+    background-position-y: 60px;
+}
+
+.admin-bar{
+    backdrop-filter: blur(0px);
+    background: none;
+}
+.admin-card-header{
+    font-family: 'Jost', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #c1c1c1;
+    padding: 10px 16px;
+}
+
+.admin-title{
+    font-family: 'Jost', sans-serif !important;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.admin-sub-text{
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+.product-btn-toolbar{
+    display: flex;
+    padding: 15px;
+}
+
+.product-btn-toolbar .btn-group-2{
+    width: auto;
+    display: flex;
+    gap: 10px;
+}
+
+.product-btn-toolbar .btn-group-2 .btn-primary{
+    height: 48px;
+    padding: 0 !important;
+    width: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card-body .products-form form{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    column-gap: 10px;
+}
+.form-group label{
+    white-space: nowrap;
+}
+
+/* поиск */
+
+.search-dropdown form{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 18px;
+}
+.search-dropdown form input{
+    width: 100%;
+    border: none;
+}
+.search-dropdown form button{
+    border: none;
+    box-shadow: none;
+    background: none;
+    font-size: 1.2rem;
+}
+.search-dropdown form input:focus{
+    border: none !important;
+    outline: none;
 }

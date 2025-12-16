@@ -15,7 +15,7 @@ class OrdersForm extends ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'phone', 'email'], 'required'],
+            [['product_id', 'name', 'phone', 'email'], 'required'],
             [['product_id'], 'integer'],
             [['name', 'comment', 'phone', 'email'], 'string', 'max' => 255],
             [['created_at', 'updated_at'], 'safe'],

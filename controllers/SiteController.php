@@ -64,37 +64,13 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
-    /**
-     * Login action.
-     *
-     * @return Response|string
-     */
-    public function actionLogin()
+    public function actionAbout()
     {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        }
-
-        $model->password = '';
-        return $this->render('login', [
-            'model' => $model,
-        ]);
+        return $this->render('about');
     }
 
-    /**
-     * Logout action.
-     *
-     * @return Response
-     */
-    public function actionLogout()
+    public function actionSupp()
     {
-        Yii::$app->user->logout();
-
-        return $this->goHome();
+        return $this->render('supp');
     }
 }

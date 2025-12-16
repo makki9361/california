@@ -55,14 +55,17 @@ $this->title = 'Заказ #' . $model->id;
             <div class="btn-toolbar justify-content-between" role="toolbar">
                 <div class="btn-group">
                     <?= Html::a('Назад к списку', ['orders'], [
-                            'class' => 'btn btn-primary'
+                            'class' => 'btn btn-primary',
+                            'style' => 'white-space: nowrap;
+    width: fit-content !important;
+    padding: 13px !important;'
                     ]) ?>
                 </div>
                 <div class="btn-group">
                     <?= Html::a('<i class="fas fa-pen"></i>', ['update-order', 'id' => $model->id], [
                             'class' => 'btn btn-primary'
                     ]) ?>
-                    <?= Html::a('<i class="fas fa-trash"></i>', ['delete-order', 'id' => $model->id], [
+                    <?= Html::a('<i class="fas fa-trash"></i>', ['delete', 'id' => $model->id], [
                             'class' => 'btn btn-primary ml-2',
                             'data' => [
                                     'confirm' => 'Вы уверены, что хотите удалить этот заказ?',
