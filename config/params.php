@@ -2,6 +2,6 @@
 
 return [
     'adminEmail' => '',
-    'senderEmail' => 'kirillmaksimencko@yandex.ru',
+    'senderEmail' => '<почта>',
     'senderName' => 'Example.com mailer',
 ];
